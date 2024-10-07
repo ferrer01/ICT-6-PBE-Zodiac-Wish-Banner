@@ -1,0 +1,129 @@
+<!--GARCIA, NEIL IVAN F.-->
+<!--GALANG, SEAN-->
+<!--12 HUD-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Zodiac Sign Banner</title>
+     <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+     <div id="backgroundVideo">
+         <video id="bgVideo" autoplay muted loop>
+             <source src="https://cdn.discordapp.com/attachments/891250880924508170/1292888775579406457/genshin-temp.mp4?ex=67056000&is=67040e80&hm=306beb950117666d2ca174ba6b3f7c83497e0c734ec40d41c4b60b9996b666c4&">
+         </video>
+     </div>
+     <div class="container">
+         <h1>Zodiac Wish</h1>
+         <form id="zodiacForm">
+             <label for="month">Select Your Birth Month:</label>
+             <select id="month" required>
+                 <option value="">Month</option>
+                 <option value="1">January</option>
+                 <option value="2">February</option>
+                 <option value="3">March</option>
+                 <option value="4">April</option>
+                 <option value="5">May</option>
+                 <option value="6">June</option>
+                 <option value="7">July</option>
+                 <option value="8">August</option>
+                 <option value="9">September</option>
+                 <option value="10">October</option>
+                 <option value="11">November</option>
+                 <option value="12">December</option>
+             </select>
+
+             <label for="day">Select Your Birth Day:</label>
+             <input type="number" id="day" min="1" max="31" required>
+
+             <button type="submit" class="wish-button">Wish for Zodiac Sign</button>
+         </form>
+
+         <div id="result" class="result hidden">
+             <h2 class="zodiac-sign">Your Zodiac Sign is: <span id="zodiacSign"></span></h2>
+             <p class="description" id="description"></p>
+             <img id="zodiacImage" src="" alt="Zodiac Sign Image" />
+             <button id="wishAgainButton" class="wish-button hidden">Wish Again</button>
+        </div>
+     </div>
+    
+     <script>
+         document.getElementById('zodiacForm').addEventListener('submit', function(event) {
+             event.preventDefault();  // Prevent page reload on form submission
+
+             const month = parseInt(document.getElementById('month').value);
+             const day = parseInt(document.getElementById('day').value);
+
+             // Results
+             const result = document.getElementById('result');
+             result.classList.add('hidden');
+
+             let zodiacSign = '';
+             let description = '';
+             let zodiacImage = '';
+
+             // Zodiac Signs
+             if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
+                 zodiacSign = 'Aquarius';
+                 description = 'Aquarians are self-reliant, creative, and forward-thinking people. They frequently work to effect social change since they are humanitarians at heart. They are highly intelligent and open-minded, yet they may also be erratic and quirky.';
+                 zodiacImage = 'https://cdn.pixabay.com/photo/2012/04/18/01/12/aquarius-36387_1280.png';
+             } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+                 zodiacSign = 'Pisces';
+                 description = 'Pisces are intuitive, artistic, and sympathetic. They frequently have a strong bond between their imagination and spirituality and are extremely emotional people. While they are sensitive and selfless, they can occasionally be overly idealistic or prone to escapism.';
+                 zodiacImage = 'https://www.pngplay.com/wp-content/uploads/12/Pisces-PNG-Clipart-Background.png';
+             } else if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
+                 zodiacSign = 'Aries';
+                 description = 'People with the sign Aries are renowned for their bravery, tenacity, and self-assurance. They are born leaders, fearless in assuming new responsibilities and making their presence known in a variety of settings. They occasionally exhibit impatience and impulsivity, though.';
+                 zodiacImage = 'https://wallpapers.com/images/featured/aries-png-kbzd474ugd2uzes3.jpg';
+             } else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
+                 zodiacSign = 'Taurus';
+                 description = 'Individuals with Taurus zodiac sign are dependable, realistic, and patient. They like comfort and security as well as finer things in life. Although they are renowned for their commitment and loyalty, they can be stubborn.';
+                 zodiacImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Taurus.svg/768px-Taurus.svg.png';
+             } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+                 zodiacSign = 'Gemini';
+                 description = 'Geminis are renowned for their brilliance, agility, and ability to adapt. They frequently engage in a variety of activities and are inquisitive and love to speak. They occasionally, though, may come out as unsure or agitated.';
+                 zodiacImage = 'https://pngimg.com/uploads/gemini/small/gemini_PNG32.png';
+             } else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
+                 zodiacSign = 'Cancer';
+                 description = 'People with cancer zodiac sign are loving, compassionate, and extremely perceptive. They frequently offer consolation and compassion since they are perceptive to their environment and other peoples feelings. They might be irritable and protective at times.';
+                 zodiacImage = 'https://pngimg.com/d/cancer_zodiac_PNG31.png';
+             } else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
+                 zodiacSign = 'Leo';
+                 description = 'Leos are charming, self-assured, and giving people. They are born entertainers and adore the limelight. They are respected for their leadership abilities and ambition, despite their tendency toward conceit.';
+                 zodiacImage = 'https://pngimg.com/d/leo_PNG42.png';
+             } else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
+                 zodiacSign = 'Virgo';
+                 description = 'Virgos are recognized for their practicality, meticulousness, and analytical disposition. They frequently have a meticulous attitude to life and are industrious and perfectionists. They can occasionally be unduly critical of both themselves and other people.';
+                 zodiacImage = 'https://pngimg.com/uploads/virgo/small/virgo_PNG40.png';
+             } else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
+                 zodiacSign = 'Libra';
+                 description = 'People in the sign of Libra are friendly, fair, and diplomatic. They value harmony and balance in their relationships and surroundings. Distinguished by their appreciation of justice and beauty, they frequently work to bring about peace yet occasionally face uncertainty.';
+                 zodiacImage = 'https://pngimg.com/d/libra_PNG38.png';
+             } else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
+                 zodiacSign = 'Scorpio';
+                 description = 'Scorpios are inventive, tenacious, and passionate. Despite frequently hiding their emotions, they are incredibly emotive and possess a captivating charisma. They are renowned for their loyalty and their intensity, yet they can also be easily envious.';
+                 zodiacImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Scorpio.svg/1024px-Scorpio.svg.png';
+             } else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
+                 zodiacSign = 'Sagittarius';
+                 description = 'Sagittarians are independent, daring, and full of optimism. They have an intense need for intellectual and physical independence and adventure. While they are straightforward and honest, they can sometimes be tactless or overly blunt.';
+                 zodiacImage = 'https://upload.wikimedia.org/wikipedia/commons/2/25/Sagittarius_%28zodiac%2C_black_line_72%29.png';
+             } else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
+                 zodiacSign = 'Capricorn';
+                 description = 'Ambition, responsibility, and discipline characterize Capricorns. They have a strong sense of tradition and goal-setting, frequently working hard to realize their aspirations. Although they can occasionally come out as somber or quiet, they are trustworthy and devoted.';
+                 zodiacImage = 'https://pngimg.com/uploads/capricorn/small/capricorn_PNG21.png';
+             }
+
+             // Update the result section with the zodiac sign information
+             document.getElementById('zodiacSign').innerText = zodiacSign;
+             document.getElementById('description').innerText = description;
+             document.getElementById('zodiacImage').src = zodiacImage;
+
+             // Show the result
+             result.classList.remove('hidden');
+         });
+
+     </script>
+</body>
+</html>
